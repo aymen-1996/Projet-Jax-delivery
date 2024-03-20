@@ -1,0 +1,65 @@
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.import {
+  margin-top: 20px;
+}
+
+.buttons-container {
+  display: flex;
+  gap: 20px;
+}
+
+.btn-modéle,
+.btn-excel {
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-modéle:hover,
+.btn-excel:hover {
+  background-color: #0056b3;
+}
+
+.form-bl {
+  margin-top: 20px;
+}
+
+.InfoDest,
+.InfoColis {
+  margin-bottom: 20px;
+}
+
+.saisie {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.button-container {
+  display: flex;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.btnv,
+.btnp {
+  padding: 10px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.btnv:hover,
+.btnp:hover {
+  background-color: #218838;
+}

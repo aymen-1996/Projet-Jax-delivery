@@ -1,0 +1,158 @@
+#sidebar {
+    width: 250px;
+    height:100%;
+    background: rgb(234, 235, 237);
+    border-right: 2px solid #b9bdcc;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); 
+    transition: all .5s ease;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    transition: width 0.5s ease-in-out;
+    transform: translateX(0);
+    .logoout {
+
+      height:50lvh !important;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      margin-top: 100%;
+      height: 100%;
+      text-decoration: none;
+  padding: 10px;
+  padding-bottom: 5px;
+    }
+    
+    .logoout a {
+      color: rgb(84, 15, 212);
+      text-decoration: none;
+      margin-right: 8px;
+      font-size: medium; /* Adjust the margin as needed */
+    }
+    
+    .logoout i {
+      font-size: 48px;
+      color: rgb(84, 15, 212);
+    }
+
+    .logo-container {
+        display: flex;
+        align-items: center;
+        padding: 0.83rem 0.38rem 0 0.38rem;
+        width: 100%;
+        // gap:20px;
+      }
+      
+      .logo-text {
+        margin-left: 1.5rem;
+        font-size: 20px;
+        font-weight: 700;
+        color: rgb(84, 15, 212);
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        
+        // transition: margin-left 0.8s ease; *
+        .text{
+            position:fixed;
+            padding: 5%;
+            transition: padding 0.5s ease-in-out;
+           
+        }
+
+      }
+      
+      .logo {
+        background: white;
+        border: 2px solid #e9d2d2;
+        text-align: center;
+        width: 3rem;
+        min-width: 3rem;
+        border-radius: 0.313rem;
+        padding: 0.313rem;
+        font-size: 24px;
+        font-weight: 900;
+        cursor: pointer;
+        color: rgb(84, 15, 212);
+      }
+
+
+      .menu-sidebar {
+        margin-top: 30px; /* Adjust the top margin as needed */
+        padding-top: 30px; /* Adjust the padding as needed */
+        // border-top: 2px solid #b9bdcc; /* Add a top border for separation */
+        display: flex;
+        flex-direction: column;
+        .sidebarcont {
+          margin-bottom: 10px; /* Adjust the bottom margin between menu items */
+          a {
+            display: block;
+            text-decoration: none;
+            color: #434c70;
+            font-size: 16px;
+            padding: 20px;
+            border-radius: 4px;
+            
+            transition: background-color 0.3s ease;
+            
+    
+            &:hover {
+              background-color: #dcdcdc; /* Adjust the hover background color as needed */
+            }
+          }
+         
+        
+             
+        }
+             
+        
+   
+      }
+     
+      
+  }
+  
+  #sidebar.collapsed {
+    width: 130px; /* Adjust as needed */
+   
+}
+
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Adjust transparency as needed */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000; /* Make sure it's on top of other elements, adjust as needed */
+}
+
+.modal-content {
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  z-index: 10001; /* Ensure modal content is on top of overlay, adjust as needed */
+}
+
+#container {
+  overflow: auto;
+  display: flex;
+  width: 100%;
+  justify-items: center;
+  background: white;
+  padding: none;
+  font-family: 'Helvetica', sans-serif;
+  border-radius: 50px;
+}
+
+
+
+.active-link {
+  border-right: 5px solid  #4221d6;
+  background-color:#dcdcdc ;
+  background-origin: padding-box;
+  font-weight:bold; /* Change this to the desired background color */
+   /* Change this to the desired text color */
+}

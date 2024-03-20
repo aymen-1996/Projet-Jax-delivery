@@ -1,0 +1,103 @@
+.container-login {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.card {
+  max-width: 400px;
+  width: 100%;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2); /* Added box shadow */
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.card-image {
+  margin-bottom: 20px;
+}
+
+.logo {
+  width: 80px; /* Adjust the width as needed */
+  height: 80px; /* Adjust the height as needed */
+}
+
+.card-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.input {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.input-field {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 25px; /* Made the input field round */
+  outline: none;
+}
+
+.input-label {
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  transform: translateY(-50%);
+  color: #9a9898;
+  pointer-events: none;
+  transition: transform 0.3s ease-out, font-size 0.3s ease-out;
+}
+
+.input-field:focus + .input-label {
+  transform: translateY(-70%) scale(0.7);
+  font-size: 6px;
+}
+
+.action-button {
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 25px; /* Made the button round */
+  cursor: pointer;
+}
+
+.action-button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.card-info {
+  text-align: center;
+  font-size: 14px;
+  color: #888;
+}
+
+.card-info a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.card-info a:hover {
+  text-decoration: underline;
+}
+.input-field:placeholder-shown + .input-label {
+  transform: translateY(-80%) scale(0.3);
+  font-size: 5px;
+}
+
+.input-field:focus + .input-label {
+  transform: translateY(-90%) scale(0.3);
+  font-size: 1px;
+}
+.input-label.hidden {
+  display: none;
+}

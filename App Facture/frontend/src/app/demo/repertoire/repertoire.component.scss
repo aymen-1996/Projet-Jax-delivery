@@ -1,0 +1,67 @@
+$borderWidth: 2px;
+
+@mixin buttonLayer {
+  content: "";
+
+
+  width: 100%;
+ 	height: 100%;
+  margin: auto;
+	border: $borderWidth solid transparent;
+  opacity: 0;
+  pointer-events: none;
+ 	border-image-slice: 1;
+}
+
+.gradient-button {
+  position: centre;
+  z-index: 1;
+  display: block;
+  top: calc(50% - 2.5rem - 5px);
+  left: calc(50% - 6rem - 5px);
+	height: 3rem;
+	width:10rem;
+  margin: auto;
+	background: transparent #227ad2;
+  background-color: #2169d6;
+  border-radius: 5px;
+	border: $borderWidth ;
+	border-image-source: linear-gradient(to top left, rgb(217, 217, 6) 0%, rgb(27, 6, 189) 40%, rgb(2, 5, 17) 80%);
+	border-image-slice: 0.8;
+  transition: transform .25s;
+  letter-spacing: .1rem;
+  font-family:  'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 1.0rem;
+  font-weight: 200;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: #ebedef;
+
+
+  &:active {
+    transform: scale(.96);
+
+    &::before {
+      opacity: 1;
+    }
+  }
+
+}
+//input
+input[type=text] {
+	appearance: none;
+	border: none;
+	outline: none;
+	//border-bottom: .2em solid #0907ae;
+	background: rgba(#9ec3ed, .2);
+	border-radius: .2em .2em 0 0;
+	padding: .4em;
+	color: #368abe;
+
+}
+
+input[type=text]:focus {
+  border-bottom: solid #2b5aba;
+}
+

@@ -1,0 +1,284 @@
+
+<div id="container">
+    <app-sidebar [isCollapsed]="isCollapsed" (toggleSidebar)="toggleSidebar()" [COMERCIO]="COMERCIO"></app-sidebar>
+    <div id="contentContainer" [style.marginLeft.px]="sidebarWidth">
+       
+      <app-header></app-header>
+        <div class="content">  
+
+        
+          
+          
+            <div class="colis">
+              
+              <div class="filter-button">
+            
+                  <div id="text">Colis</div>
+                  <div class="form-group"> 
+                    <button id="button" class="buttonfiltre" (click)="toggleCommercialFilter()">
+                      Commercial
+                      </button>
+                  <div *ngIf="isCommercialFilterOpen" class="filter-popup">
+                    <div class="filter-content">
+                      <form class="filterform" >
+                        <!-- <button id="close" (click)="closeCommercialFilter()">x</button> -->
+
+                        <div >
+                          <div *ngFor="let commerce of Commerce">
+                            <label>
+                              <input type="checkbox" [checked]="selectedNomCom[commerce.toLowerCase()] ? selectedNomCom[commerce.toLowerCase()].isChecked : false" (change)="toggleCheckbox(commerce, 'nomCom')">
+                              {{ commerce }}
+                            </label>
+                          </div>
+                        </div>
+                      </form>
+                      
+          
+                    </div>
+                  </div>
+                
+               
+                </div>
+
+                <div class="form-group">
+                  <button id="button" class="buttonfiltre" (click)=" toggleGovernouratFilter()">Gouvernorat</button>
+
+                  <div *ngIf="isGovernouratFilterOpen" class="filter-popup">
+                    <div class="filter-content">
+                      <form class="filterform">
+                        <!-- <button id="close" (click)="closeGovernouratFilter()">x</button> -->
+                        <div>
+                          <div *ngFor="let gouvernorat of gouvernoratsTunisie">
+                            <label>
+                              <input type="checkbox" [checked]="selectedGov[gouvernorat.toLowerCase()]" (change)="toggleCheckbox(gouvernorat, 'gov')">
+                              {{ gouvernorat }}
+                            </label>
+                          </div>
+                        </div>
+                       
+                      </form>
+                     
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <button id="button" class="buttonfiltre" (click)=" toggleDateFilter()">Date</button>
+
+                  <div *ngIf="isDateFilterOpen" class="filter-popup">
+                    <div class="filter-content">
+                      <form class="filterform">
+                      
+                        <input class="date" type="date" id="dateFilter" [(ngModel)]="selectedDate" name="selectedDate" (change)="applyFilter()">
+
+                      </form></div> </div>
+                </div>
+
+                  <button id="button"  class="buttonajouter"  (click)="openDialog()">+ Ajouter </button>
+           
+            </div>
+         
+            <!-- <div class="ajouter">
+            <button>+ Ajouter</button>
+           
+    
+            </div> -->
+                  
+    <div class="tablecontainer">
+      <div class="table"> 
+                <table>
+                  <thead>
+                    <tr>
+                      <th style="width: 150px;">NOM CLIENT</th>
+                      <th>COMMERCIAL</th>
+                      <th>Gouvernorat</th>
+                      <th>Collis livré</th>
+                      <th>Frais de livraison</th>
+                      <th>Retour colis</th>
+                      <th>Frais retour</th>
+                      <th>Contre Remb</th>
+                      <th style="width: 100px;">Date</th>
+                    </tr>
+                  </thead>
+                  <tbody  >
+                    <tr class="row" *ngFor="let client of  pagedClientList" (click)="onRowClick(client)">
+                      <td>{{client.nomCl}}</td>
+                      <td>{{client.nomCom}}</td>
+                      <td>{{client.gov}}</td>
+                      <td>{{client.ColLiv}}</td>
+                      <td>{{client.FrLiv}}</td>
+                      <td>{{client.ColRtr}}</td>
+                      <td>{{client.FrRtr}}</td>
+                      <td>{{client.Cr}}</td>
+                      <td>{{client.date}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div class="pagination">
+                  <button (click)="goToFirstPage()" [disabled]="page === 1" class="btn btn-outline-primary">&laquo;</button>
+                  <button style="width:30px;" (click)="changePage(page - 1)" [disabled]="page === 1" class="btn btn-outline-primary"><</button>
+                  <button *ngFor="let pageNumlist of visiblePagesList" (click)="changePage(pageNumlist)" [disabled]="page === pageNumlist"
+                  class="btn btn-outline-primary" [ngClass]="{ 'active': page === pageNumlist }">
+                  {{ pageNumlist }}
+                </button>
+                  <button  style="width:30px;" (click)="changePage(page + 1)" [disabled]="page === totalPages" class="btn btn-outline-primary">></button>
+                  <button (click)="goToLastPage()" [disabled]="page === totalPages" class="btn btn-outline-primary">&raquo;</button>
+                </div>
+              </div>  
+              
+              <div style="height: 400px;" class="side-content"  *ngIf="selectedRow">
+                    <div  class="card">
+                      <div class="title">CHIFFRE D AFFAIRE</div>
+                      <div class="info">
+                        <p >GLOBAL : {{selectedRow.Global}}</p>
+                        <p>CA LIVRAISON : {{selectedRow.CaLiv}}</p>
+                        <p>CA RETOUR : {{selectedRow.caRtr}}</p>
+                        <p>CR/CA : {{selectedRow.CrCa | number:'1.2-2' }}</p>
+                        <p>Ca autre : {{selectedRow.CaAutre}}</p>
+                        <p>Ca date/globale : {{selectedRow.CaGlobal}}</p>
+                        <p>frais liv moy : {{selectedRow.FLivMoy}}</p>
+                        <p>Frais retour moy : {{selectedRow.FRtrMoy}}</p>
+                      </div>
+              </div>   
+              </div>
+        </div>
+      </div>
+  
+  
+        <div class="performances">
+          <div class="filter-button">
+            <div id="text">Comparer les performances</div>
+            <div class="form-group"> 
+          
+          <button id="button"  (click)="toggleFormchiffre('nomCL')">CLIENT</button>
+          <div *ngIf="showNomClFormchiffre" class="filter-popup">
+            <input class="filtre"   type="text" [(ngModel)]="filterValue" placeholder="Search client" (input)="getAllClientsFiltrefiltre()">
+          <div class="filter-content">  
+            
+           
+            <form class="filterform">
+              
+                <div *ngFor="let client of clients">
+                  <label class="label">
+                    <input type="checkbox" [checked]="selectedNomClchiffre[client.toLowerCase()] ? selectedNomClchiffre[client.toLowerCase()].isChecked : false" (change)="toggleCheckboxchiffre(client, 'nomCl')">
+                    {{ client }}
+                  </label>
+             
+              </div>
+            </form>
+            
+          </div>
+        </div>
+        </div>
+        <div class="form-group">
+          <button id="button" (click)="toggleFormchiffre('nomCom')">Commercial</button>
+          <div  *ngIf="showNomComFormchiffre"  class="filter-popup">
+          <div class="filter-content"> 
+          <form class="filterform">
+            <div >
+              <div *ngFor="let commerce of Commerce">
+                <label>
+                  <input type="checkbox" [checked]="selectedNomComchiffre[commerce.toLowerCase()] ? selectedNomComchiffre[commerce.toLowerCase()].isChecked : false" (change)="toggleCheckboxchiffre(commerce, 'nomCom')">
+                  {{ commerce }}
+                </label>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+        </div>
+        <div class="form-group">
+          <button id="button"  (click)="toggleFormchiffre('gov')">Gouvernorat</button>
+          <div *ngIf="showNomGovFormchiffre" class="filter-popup" >
+            <div class="filter-content"> 
+          <form class="filterform">
+            <div>
+              <div *ngFor="let gouvernorat of gouvernoratsTunisie">
+                <label>
+                  <input type="checkbox" [checked]="selectedGovchiffre[gouvernorat.toLowerCase()] ? selectedGovchiffre[gouvernorat.toLowerCase()].isChecked : false" (change)="toggleCheckboxchiffre(gouvernorat, 'gov')">
+                  {{ gouvernorat }}
+                </label>
+              </div>
+            </div>
+          </form>
+        </div>
+        </div>
+        </div>
+
+
+        <div class="form-group">
+          <button id="button" class="buttonfiltre" (click)="toggleFormchiffre('date')">Date</button>
+          <div *ngIf="showDateFormchiffre" class="filter-popup">
+            <div class="filter-content">
+              <form class="filterform">
+              
+                <input class="date" type="date" id="dateFilter" [(ngModel)]="selectedDateshiffre" name="selectedDateshiffre" (change)="applyFilterChiffre()">
+
+              </form>
+            </div>
+           </div>
+    
+
+        </div>
+         </div>
+
+
+         
+        
+         
+  <div class="card-container">
+   
+    <div class="card-info" *ngFor="let chiffres of pagedChiffreList">
+     <div class="title">CHIFFRE D AFFAIRE</div>
+      <div class="info">
+        <p>Nom Com  {{ chiffres?.nomCom }}</p>
+        <p>Gouvernorat {{ chiffres?.gov }}</p>
+        <p>GLOBAL {{ chiffres?.Global }}</p>
+        <p>CA LIVRAISON {{ chiffres?.CaLiv }}</p>
+        <p>CA RETOUR {{ chiffres.caRtr }}</p>
+        <p>CR/CA {{ chiffres.CaAutre }}</p>
+        <p>Ca date/globale {{ chiffres.CrCa }} </p>
+        <p>frais liv moy {{ chiffres.FLivMoy }}</p>
+        <p>Frais retour moy {{ chiffres.FRtrMoy }}</p>
+      </div>
+    </div>
+ 
+  </div>
+
+
+<div class="pagination-buttons">
+  <div class="pagination-container">
+    <button (click)="goToFirstPageChiffre()" [disabled]="pageChiffre === 1" class="btn btn-outline-primary">&laquo;</button>
+    <button  style="width:30px;" (click)="changePageChiffre(pageChiffre - 1)" [disabled]="pageChiffre === 1" class="btn btn-outline-primary left-arrow"><</button>
+
+    <button *ngFor="let pageNum of visiblePages" (click)="changePageChiffre(pageNum)" [disabled]="pageChiffre === pageNum"
+      class="btn btn-outline-primary" [ngClass]="{ 'active': pageChiffre === pageNum }">
+      {{ pageNum }}
+    </button>
+
+    <button style="width:30px;" (click)="changePageChiffre(pageChiffre + 1)" [disabled]="pageChiffre === totalPagesChiffre" class="btn btn-outline-primary right-arrow">></button>
+    <button (click)="goToLastPageChiffre()" [disabled]="pageChiffre === totalPagesChiffre" class="btn btn-outline-primary">&raquo;</button>
+  </div>
+</div>
+
+</div>
+
+</div>
+
+
+
+ 
+
+
+
+
+<div *ngIf="isPopupVisible" class="modal-overlay">
+  <div class="modal-content" (click)="stopPropagation($event)">
+ <button id="close" (click)="closeDialog()">x</button>
+ <app-formperformance
+ *ngIf="isPopupVisible"
+ (validerClicked)="handleValiderClicked()"
+></app-formperformance>
+   
+  </div>
+</div>

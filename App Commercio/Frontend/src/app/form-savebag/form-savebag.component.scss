@@ -1,0 +1,133 @@
+
+
+#container {
+  overflow: auto;
+  display: flex;
+  width: 100%;
+  justify-items: center;
+  background: white;
+  padding: none;
+  font-family: 'Helvetica', sans-serif;
+  border-radius: 10px;
+ 
+}
+
+
+.popupadd {
+
+  background-color: white;
+  width: 100%;
+  height: 50%;
+  align-items: center;
+
+ 
+
+
+  .upload{
+   padding-bottom: 30px;
+   padding-top: 20px;
+   margin-left: 5px;
+   display: inline-block; 
+   .upload-btn {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    padding: 8px 12px;
+  }
+  
+  .upload-btn i {
+    margin-right: 8px; 
+    padding: 20px;/* Adjust the margin as needed */
+  }
+  
+  #fileInput {
+    position: absolute;
+   
+    width: 100%;
+  
+    opacity: 0;
+    cursor: pointer;
+  }
+  }
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+  
+ 
+ 
+    // .client .example-full-width:hover{
+    //     border:  #0ad2ed solid;
+    // }
+
+   
+    
+  }
+
+  form:first-child{
+    margin-right: auto;
+   
+  }
+  .inputs {
+    display: flex;
+    justify-content:center;
+    width:80%;
+
+
+
+    .in {
+      display: flex;
+      flex-direction: column;
+      
+      margin: 10px;
+
+     
+
+      input {
+        width: 80%;
+      
+      }
+
+
+      
+    }
+
+    
+  }
+
+
+}
+
+
+  
+
+//   ::ng-deep .mat-mdc-text-field-wrapper:hover{
+//     height: 3rem !important;
+//     border:  #0ad2ed solid;
+//   }
+
+button {
+  height: 2rem;
+  background-color: #4221d6;
+  border-radius: 5px;
+  border:2px; 
+  width: 10rem;
+  margin-bottom:20px;
+  // transition: transform .25s;
+  text-align: center;
+  color: #e6d9dd;  
+}
+button:hover{
+  background-color: #3339ef;
+  cursor: pointer;
+}
+
+.client{
+   
+  width:100%;
+  .example-full-width{
+      width: 100%;
+  } 
+ 
+}

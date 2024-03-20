@@ -1,0 +1,63 @@
+<div id="container">
+  <div class="popupadd">
+    <form [formGroup]="coliform" (ngSubmit)="createColis()">
+      <div class="upload">
+        <mat-error *ngIf="!fileSelected && isFormSubmitted && isFormEmpty()">Ce champ est vide</mat-error>
+        <input type="file" id="fileInput" name="fileInput" (change)="onFileSelected($event)">
+        <label for="fileInput" class="upload-btn" [ngClass]="{'selected': fileSelected}">
+           Upload doc excel <i class="fa fa-download" style="font-size:24px"></i>
+
+        </label>
+
+      </div>
+      <div class="client">
+        <p>Client</p>
+        <mat-form-field appearance="outline" class="example-full-width">
+          <mat-label for="selectOption">Sélectionner ou crééer un client:</mat-label>
+          <input
+          matInput
+          placeholder="Rechercher un client"
+          [matAutocomplete]="auto"
+          formControlName="nomCl"
+          [value]="coliform.value.nomCl"
+        />
+
+        <!-- Autocomplete options -->
+        <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayClient">
+          <mat-option *ngFor="let client of filteredClients | async" [value]="client.nomCl">
+            {{ client.nomCl }}
+          </mat-option>
+        </mat-autocomplete>
+          <mat-error *ngIf="coliform.get('nomCl')!.hasError('required')">Ce champ est obligatoire</mat-error>
+        </mat-form-field>
+      </div>
+      <div class="inputs">
+        <div class="in">
+          <mat-form-field appearance="outline">
+            <mat-label for="textInput1">Nbre de colis livrés:</mat-label>
+            <input matInput type="text" id="textInput1" name="textInput1" formControlName="ColLiv">
+            <mat-error *ngIf="!fileSelected && coliform.get('ColLiv')!.hasError('required')">Ce champ est obligatoire</mat-error>
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label for="textInput2">Nombre de colis reçu par l'expéditeur:</mat-label>
+            <input matInput type="text" id="textInput2" name="textInput2" formControlName="ColRtr">
+            <mat-error *ngIf="!fileSelected && coliform.get('ColRtr')!.hasError('required')">Ce champ est obligatoire</mat-error>
+          </mat-form-field>
+        </div>
+        <div class="in">
+          <mat-form-field appearance="outline">
+            <mat-label for="textInput3">CA Autre:</mat-label>
+            <input matInput type="text" id="textInput3" name="textInput3" formControlName="CaAutre">
+            <mat-error *ngIf="!fileSelected && coliform.get('CaAutre')!.hasError('required')">Ce champ est obligatoire</mat-error>
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label for="textInput4">Contre remboursement :</mat-label>
+            <input matInput type="text" id="textInput4" name="textInput4" formControlName="Cr">
+            <mat-error *ngIf="!fileSelected && coliform.get('Cr')!.hasError('required')">Ce champ est obligatoire</mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <button  class="button" type="submit">Valider</button>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,9 @@
+<ng-container *ngIf="isLoggedIn(); else loginBlock">
+
+<router-outlet></router-outlet>
+<script defer src="script.js"></script>
+</ng-container>
+
+<ng-template #loginBlock>
+    <app-login></app-login>
+  </ng-template>

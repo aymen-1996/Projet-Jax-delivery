@@ -1,0 +1,8 @@
+
+<div (click)="onLinkClick()">
+    <div class="loading-overlay" [style.display]="(loading$ | async) ? 'flex' : 'none'" id="loadingOverlay">
+      <div class="loading-spinner"></div>
+    </div>
+    <router-outlet></router-outlet>
+  </div>
+  

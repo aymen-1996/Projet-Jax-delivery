@@ -1,0 +1,58 @@
+<div class="container">
+  <div class="forms-container">
+    <div class="form-control signup-form">
+      
+ 
+    
+      <form [formGroup]="formReg" (ngSubmit)="registerUser()">
+     
+          <h2>Signup</h2>
+          <div *ngIf="successMessagereg" class="alert alert-success">
+            {{ successMessagereg }}
+          </div>
+     
+        
+        <input type="text" formControlName="matriculeFiscale" placeholder="matriculeFiscale" />
+        <input type="text" formControlName="email" placeholder="Email" autocomplete="username" />
+
+        <div *ngIf="errorMessagereg" class="alert alert-danger">
+  {{ errorMessagereg }}
+</div>
+<input type="password" formControlName="password" placeholder="Password" autocomplete="current-password" />
+<input type="text"  formControlName="name"placeholder="name" />
+        <button type="submit">Signup</button>
+      </form>
+    </div>
+    <div class="form-control signin-form">
+
+    
+      <div *ngIf="errorMessage" class="error-message">
+          {{ errorMessage }}
+        </div>
+      <form [formGroup]="formUser" (ngSubmit)="userauth()">
+      
+        <h2>Signin</h2>
+        <input type="text" formControlName="email" placeholder="Email" autocomplete="username" />
+        <input type="password" formControlName="password" placeholder="Password" autocomplete="current-password" />
+        <button type="submit">Signin</button>
+
+      </form> 
+      <p routerLink="/resetPassword">reset Your Password<p>
+           
+    </div>
+  </div>
+  <div class="intros-container">
+    <div class="intro-control signin-intro">
+      <div class="intro-control__inner">
+        <h2>Welcome</h2>
+       
+      </div>
+    </div>
+    <div class="intro-control signup-intro">
+      <div class="intro-control__inner">
+        <h2>Come join us!</h2>
+        <button id="signin-btn">Already have an account? Signin.</button>
+      </div>
+    </div>
+  </div>
+</div>

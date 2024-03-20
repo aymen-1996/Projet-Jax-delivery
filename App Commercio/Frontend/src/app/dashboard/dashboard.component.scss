@@ -1,0 +1,110 @@
+#container{
+  scrollbar-gutter: stable;
+  overflow:auto;
+    display: flex;
+    width: 100%;
+   
+    background: rgb(224, 229, 240);
+    padding: none;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    
+    #sidebar {
+        width: 200px;
+        height: 100%;
+        background: rgb(234, 235, 237);
+        border-right: 2px solid #b9bdcc;
+        box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); 
+        transition: all .5s ease;
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        transition: width 0.5s ease-in-out;
+        transform: translateX(0);
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            padding: 0.83rem 0.38rem 0 0.38rem;
+            width: 100%;
+            // gap:20px;
+          }
+          
+          .logo-text {
+            margin-left: 1.5rem;
+            font-size: 20px;
+            font-weight: 700;
+            color: rgb(84, 15, 212);
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            
+            // transition: margin-left 0.8s ease; *
+            .text{
+                position:fixed;
+                padding: 5%;
+                transition: padding 0.5s ease-in-out;
+               
+            }
+
+          }
+          
+          .logo {
+            background: white;
+            border: 2px solid #e9d2d2;
+            text-align: center;
+            width: 3rem;
+            min-width: 3rem;
+            border-radius: 0.313rem;
+            padding: 0.313rem;
+            font-size: 24px;
+            font-weight: 900;
+            cursor: pointer;
+            color: rgb(84, 15, 212);
+          }
+
+          
+      }
+      
+      #sidebar.collapsed {
+        width: 100px; /* Adjust as needed */
+        overflow: hidden;
+    }
+    
+      
+     
+
+    #contentContainer{
+        flex-grow: 1;
+        background: rgb(202, 209, 222);
+        transition:margin-left 0.5s ease-in-out;
+        
+        .content {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+          }
+        // margin-left: -20px;
+        #header{
+            display: flex;
+            width:100%;
+            padding: 20px 30px;
+            box-sizing: border-box;
+            justify-content: space-between;
+        }
+
+        #menu{
+            display: flex ;
+            gap: 20px;
+            a{
+                text-decoration: none;
+                color: #232941;
+                font-size: 16px;
+            }
+        }
+      
+    }
+
+
+    // &.sidebarActive{
+    //     #sidebar
+    // }
+    }
+

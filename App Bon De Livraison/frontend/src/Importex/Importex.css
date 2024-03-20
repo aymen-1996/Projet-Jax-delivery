@@ -1,0 +1,28 @@
+.importex-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .file-upload-container {
+    margin-top: 20px;
+  }
+  
+  input[type="file"] {
+    margin-right: 10px;
+  }
+  
+  button {
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Add more styles as needed */
+  

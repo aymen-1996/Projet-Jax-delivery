@@ -1,0 +1,33 @@
+.view-bl-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.filters-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.custom-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.custom-table th, .custom-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.pagination-container {
+  margin-top: 20px;
+}
+
+.pagination-container button {
+  margin-right: 5px;
+}
+
+/* Add more styles as needed */

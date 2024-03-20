@@ -1,0 +1,54 @@
+<div id="container">
+  <div class="popupadd">
+    <form [formGroup]="savebagform" (ngSubmit)="createSavebag()">
+      <div class="client">
+        <p>Client</p>
+        <mat-form-field appearance="outline" class="example-full-width">
+          <mat-label for="selectOption">Sélectionner ou crééer un client:</mat-label>
+          <input
+          matInput
+          placeholder="Rechercher un client"
+          [matAutocomplete]="auto"
+          formControlName="nomCl"
+          [value]="savebagform.value.nomCl"
+        />
+
+        <!-- Autocomplete options -->
+        <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayClient">
+          <mat-option *ngFor="let client of filteredClients | async" [value]="client.nomCl">
+            {{ client.nomCl }}
+          </mat-option>
+        </mat-autocomplete>
+          <mat-error *ngIf="savebagform.get('nomCl')!.hasError('required')">Ce champ est obligatoire</mat-error>
+        </mat-form-field>
+      </div>
+      <div class="inputs">
+        <div class="in">
+          <mat-form-field appearance="outline">
+            <mat-label for="textInput1">Quantité Savebag MF:</mat-label>
+            <input matInput type="text" id="textInput1" name="textInput1" formControlName="sbmf">
+            <mat-error *ngIf="savebagform.get('sbmf')!.hasError('required')">Ce champ est obligatoire</mat-error>
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label for="textInput2">Prix Savebag MF:</mat-label>
+            <input matInput type="text" id="textInput2" name="textInput2" formControlName="Psbmf">
+            <mat-error *ngIf="savebagform.get('Psbmf')!.hasError('required')">Ce champ est obligatoire</mat-error>
+          </mat-form-field>
+        </div>
+        <div class="in">
+          <mat-form-field appearance="outline">
+            <mat-label for="textInput3">Quantité Savebag GF</mat-label>
+            <input matInput type="text" id="textInput3" name="textInput3" formControlName="sbgf">
+            <mat-error *ngIf="savebagform.get('sbgf')!.hasError('required')">Ce champ est obligatoire</mat-error>
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label for="textInput4">Prix Savebag GF:</mat-label>
+            <input matInput type="text" id="textInput4" name="textInput4" formControlName="Psbgf">
+            <mat-error *ngIf="savebagform.get('Psbgf')!.hasError('required')">Ce champ est obligatoire</mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <button type="submit">Valider</button>
+    </form>
+  </div>
+</div>

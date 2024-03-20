@@ -1,0 +1,67 @@
+/* NavBar.css */
+
+.navbar-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.navbar {
+  background-color: #8b7e33; /* Blue background color */
+}
+.navbar a {
+  color: #fff; /* White text color */
+}
+
+.sidebar-icon {
+  margin-right: 15px;
+}
+
+.menu-bar {
+  color: #fff;
+  text-decoration: none;
+}
+
+.nav-menu {
+  background-color: #007bff; /* Blue background color for the sidebar */
+  width: 250px;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: -250px;
+  transition: 350ms;
+}
+
+.nav-menu.active {
+  left: 0;
+  background-color: #007bff;
+}
+
+.nav-menu-items {
+  padding: 0;
+  list-style: none;
+}
+
+.navbar-toggle {
+  display: flex;
+  justify-content: flex-end;
+  padding: 15px;
+}
+
+.menu-bars {
+  color: #fff;
+  text-decoration: none;
+}
+
+.nav-menu-items li {
+  padding: 15px;
+  text-align: center;
+}
+
+.nav-menu-items a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.nav-menu-items a:hover {
+  text-decoration: underline;
+}

@@ -1,0 +1,15 @@
+<div id="sidebar" [ngClass]="{'collapsed': isCollapsed}">
+    <div class="logo-container">
+        
+      <div class="logo-text" >
+        <button class="logo" (click)="onToggleSidebar()">C</button>
+       <span  class="text"       *ngIf="!COMERCIO">COMERCIO</span> 
+      </div>
+    </div>
+    <div class="menu-sidebar">
+        <div class="sidebarcont"><a routerLink="/performance" routerLinkActive="active-link">Performance Colis</a></div>
+        <div class="sidebarcont"><a routerLink="/SAVEBAG" routerLinkActive="active-link">SAVEBAG</a></div>
+        <div class="logoout" (click)="logout()"><a >Logout</a> <i class="fa fa-sign-out" style="font-size:36px;color:rgb(84, 15, 212)"></i></div>
+    </div>
+  
+  </div>

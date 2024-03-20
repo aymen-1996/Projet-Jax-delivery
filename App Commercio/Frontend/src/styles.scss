@@ -1,0 +1,151 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import 'https://fonts.googleapis.com/icon?family=Material+Icons';
+@import '~alertifyjs/build/css/alertify.css';
+@import '~alertifyjs/build/css/themes/default.css';
+@import "../node_modules/alertifyjs/build/css/alertify.css";
+@import "../node_modules/alertifyjs/build/css/themes/bootstrap.min.css";
+@import "../node_modules/alertifyjs//build/css/themes/default.min.css";
+@import "~@ng-select/ng-select/themes/default.theme.css";
+
+
+
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+
+// ::ng-deep .mat-mdc-text-field-wrapper{
+//   height: 4rem !important;
+// }
+
+.material-icons{
+  font-family: 'Material Icons' !important;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Adjust transparency as needed */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10; /* Make sure it's on top of other elements, adjust as needed */
+}
+
+.modal-content {
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  z-index: 1; /* Ensure modal content is on top of overlay, adjust as needed */
+}
+
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .modal-content {
+    background: #ddbebe00;
+    padding-right: 30px;
+    border-radius: 8px;
+    position: relative !important;  /* Add this to make positioning children relative to this element */
+    #close {
+      position: absolute;
+      top: 10px; /* Adjust top position as needed */
+      right: 10px; /* Adjust right position as needed */
+      cursor: pointer;
+      border-radius: 10px;
+      font-size: medium;
+      border: 1px solid #ddbebe69;
+      background-color:#ddbebe69;
+    }
+    #close:hover{
+      background-color: rgb(126, 152, 209);
+    }
+  
+  
+  }
+}
+
+
+
+ .mat-mdc-dialog-container .mdc-dialog__surface {
+  border-radius: 20px !important;
+  padding: 50px;
+ 
+
+}
+
+
+ .mat-mdc-text-field-wrapper{
+  height: 3rem !important;
+  width: 20%;
+  margin-left: 5px;
+
+
+
+  
+}
+
+ .mat-mdc-form-field-infix{
+
+  flex: auto;
+  min-width: 0;
+  width: 200px !important;
+  position: relative;
+  box-sizing: border-box;
+
+
+
+
+
+
+}
+
+
+form{
+  padding: 15px;
+  
+}
+
+
+
+.mat-mdc-form-field:not(.mat-form-field-disabled) .mat-mdc-floating-label.mdc-floating-label {
+  
+  font-size: 15px;
+  
+  
+}
+
+.mdc-floating-label {
+  white-space:nowrap!important;
+  
+}
+
+
+.mat-mdc-form-field .mat-mdc-floating-label.mdc-floating-label{
+  line-height: 5px;
+}
+
+.logoout{
+
+  height: 100px !important;
+  text-decoration: none;
+  color: rgb(25, 0, 255);
+}     

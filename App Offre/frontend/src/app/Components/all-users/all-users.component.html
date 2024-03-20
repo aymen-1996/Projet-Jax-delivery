@@ -1,0 +1,64 @@
+<!-- all-users.component.html -->
+<app-navbar></app-navbar>
+<br>
+<h2>List Users</h2>
+
+<form [formGroup]="filterForm">
+  <div class="row">
+    <div class="col-5">
+      <label for="email">Email:</label>
+      <input type="text" id="email" formControlName="email" (input)="applyFilter()">
+    </div>
+    <div class="col-5">
+      <label for="active">Etat de compte:</label>
+      <select id="active" formControlName="active" (change)="applyFilter()">
+        <option value="">Tous</option>
+        <option value="true">Compte actif</option>
+        <option value="false">Compte désactivé</option>
+      </select>
+    </div>
+  </div>
+</form>
+
+<div>
+  <table>
+    <thead>
+      <tr>
+        <th>Email</th>
+        <th>Name</th>
+        <th>Matricule Fiscale</th>
+        <th>Etat compte</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of pagedUserList" [ngClass]="{'colored': !user.active}">
+        <td>{{ user.email }}</td>
+        <td>{{ user.name }}</td>
+        <td>{{ user.matriculeFiscale }}</td>
+        <td [class.active]="user.active" [class.inactive]="!user.active">
+          {{ user.active ? 'Active' : 'Désactivé' }}
+        </td>
+                <td>
+          <label class="switch">
+            <input type="checkbox" [checked]="user.active" (change)="updateActive(user.id)">
+            <span class="slider"></span>
+          </label>
+        </td>
+     
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<h2 *ngIf="totalItems === 0">List is empty</h2>
+
+<div class="pagination-container">
+  <button (click)="changePage(page - 1)" [disabled]="page === 1" class="pagination-button">Previous</button>
+
+  <button *ngFor="let pageNum of getPagesArray()" (click)="changePage(pageNum)" [disabled]="page === pageNum" class="pagination-button" [ngClass]="{ 'active': page === pageNum }">
+    {{ pageNum }}
+  </button>
+
+  <button (click)="changePage(page + 1)" [disabled]="page === totalPages" class="pagination-button">Next</button>
+</div>

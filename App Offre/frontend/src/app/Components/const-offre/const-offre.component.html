@@ -1,0 +1,131 @@
+<app-navbar></app-navbar>
+<br>
+<h2> List Invalid</h2>
+
+<form [formGroup]="filterForm">
+  <div class="row">
+    <div class="col-4">
+      <label for="dateBl">Date:</label>
+      <input type="date" id="dateBl" formControlName="dateBl" (input)="applyFilter()">
+    </div>
+    <div class="col-4">
+      <label for="reference">Reference:</label>
+      <input type="text" id="reference" formControlName="reference" (input)="applyFilter()">
+    </div>
+  </div>
+</form>
+
+<div>
+  <table>
+    <thead>
+      <tr>
+        <th>Date </th>
+   
+        <th>Reference</th>
+        <th>Mob</th>
+        <th>address</th>
+        <th>Fixe</th>
+        <th>Colis Retour</th>
+        <th>Action</th>
+        <th>update</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let bl of pagedBlList">
+        <td>{{ bl.dateBl | date}}</td>
+        <td>{{ bl.reference }}</td>
+        <td>{{ bl.Mob }}</td>
+        <td>{{ bl.address }}</td>
+        <td>{{ bl.Fixe }}</td>
+        <td>{{ bl.colisRetour }}</td>
+        <td>
+          <svg (click)="generatePdf(bl.id)" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+            class="bi bi-download" viewBox="0 0 16 16">
+            <path
+              d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5" />
+            <path
+              d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z" />
+          </svg>
+        </td>
+        <td>
+       
+          <svg (click)="openModal(bl.id)" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-capslock-fill" viewBox="0 0 16 16">
+            <path d="M7.27 1.047a1 1 0 0 1 1.46 0l6.345 6.77c.6.638.146 1.683-.73 1.683H11.5v1a1 1 0 0 1-1 1h-5a1 1 0 0 1-1-1v-1H1.654C.78 9.5.326 8.455.924 7.816L7.27 1.047zM4.5 13.5a1 1 0 0 1 1-1h5a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1h-5a1 1 0 0 1-1-1z"/>
+          </svg>
+<div id="myModal" class="modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+     
+            <div class="modal-header">
+            
+                <h5 class="modal-title">Ajouter matriculeFiscale</h5>
+                <button  (click)="closeModal('myModal')"  aria-label="Close">X</button>
+            </div>
+            <div *ngIf="errorMessage" class="alert alert-danger">
+              {{ errorMessage }}
+            </div>
+            <div class="modal-body">
+<form [formGroup]="modalForm" (ngSubmit)="updateMatriculeFiscale()">
+  <label for="matriculeFiscale">Matricule Fiscale</label>
+  <input type="text" formControlName="matriculeFiscale" name="matriculeFiscale" class="form-input" [disabled]="isCINFilled" (input)="onMatriculeInput()">
+  
+  <label for="CIN">CIN</label>
+  <input type="text" formControlName="CIN" name="CIN" class="form-input" [disabled]="isMatriculeFilled" (input)="onCINInput()">
+
+  <label for="Mob">Mob</label>
+  <input type="text" formControlName="Mob"  class="form-input" >
+
+  <label for="colisRetour">Colis Retour</label>
+  <input type="text" formControlName="colisRetour"  class="form-input" >
+
+  <label for="colisLivre">Colis Livre</label>
+  <input type="text" formControlName="colisLivre"  class="form-input" >
+
+  <label for="colisechange">Colis Echange</label>
+  <input type="text" formControlName="colisechange"  class="form-input" >
+
+  <label for="poids">Poids</label>
+  <input type="text" formControlName="poids"  class="form-input" >
+
+  <label for="duree">Duree</label>
+  <input type="text" formControlName="duree"  class="form-input" >
+
+  <label for="COD">COD</label>
+  <input type="text" formControlName="COD"  class="form-input" >
+
+  <label for="reference">Reference</label>
+  <input type="text" formControlName="reference"  class="form-input" >
+
+  <label for="Fixe">Fixe</label>
+  <input type="text" formControlName="Fixe"  class="form-input" >
+
+  <label for="address">Address</label>
+  <input type="text" formControlName="address"  class="form-input" >
+
+  <button type="submit">Submit</button>
+</form>
+
+
+            </div>
+          
+        </div>
+    </div>
+</div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
+  
+<h2 *ngIf="pagedBlList === null">Liste est vide</h2>
+
+<div class="pagination-container">
+  <button (click)="changePage(page - 1)" [disabled]="page === 1" class="pagination-button">Previous</button>
+
+  <button *ngFor="let pageNum of getPagesArray()" (click)="changePage(pageNum)" [disabled]="page === pageNum" class="pagination-button" [ngClass]="{ 'active': page === pageNum }">
+    {{ pageNum }}
+  </button>
+
+  <button (click)="changePage(page + 1)" [disabled]="page === totalPages" class="pagination-button">Next</button>
+</div>

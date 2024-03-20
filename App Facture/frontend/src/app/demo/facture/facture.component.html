@@ -1,0 +1,142 @@
+<!-- [ Main Content ] start -->
+<div class="row">
+  <!-- [ Typography ] start -->
+  <div class="col-sm-12">
+    <div class="card">
+      <div class="card-header">
+        <h5>Facture</h5>
+      </div>
+      <div class="card-body pc-componant">
+        <div class="dashboard-container">
+          <div *ngIf="successMessage" class="alert alert-success">
+            {{ successMessage }}
+          </div>
+        
+
+          <div class="dashboard-content">
+            <form (ngSubmit)="createFacteur()" class="row g-3">
+              <div class="col-md-6">
+
+                <label for="numFact" class="form-label" >Reference facture</label>
+                <input type="text" name="numFact" [(ngModel)]="facture.numFact" class="form-control" />
+              </div>
+              <div class="col-md-6">
+                <label for="dateFact" class="form-label">Date</label>
+                <input type="date" [(ngModel)]="facture.dateFact" name="dateFact" class="form-control" />
+              </div>
+              <div class="col-md-6">
+                <label for="datePay" class="form-label">Date de paiement</label>
+                <input type="date" [(ngModel)]="facture.datePay" name="datePay" class="form-control" required />
+              </div>
+              <div class="col-md-6">
+                <label for="dateEch" class="form-label">Date d'échéance</label>
+                <input type="date" [(ngModel)]="facture.dateEch" name="dateEch" class="form-control" required />
+              </div>
+              <table class="table">
+                <thead class="table-primary">
+                  <tr>
+                    <th>Code</th>
+                    <th>Designation</th>
+                    <th>Quantité</th>
+                    <th>Prix Unitaire H.T</th>
+                    <th>Montant H.T</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngIf="showRow[0]" (click)="onChange($event)">
+                    <td >1</td>
+                    <td>Colis livrés</td>
+                    <td><input type="text" [(ngModel)]="facture.QteColLiv" name="QteColLiv" (input)="Calcul()" required class="form-control"></td>
+                    <td><input type="text" name="PColLiv" [value]="clients.PColLiv" [(ngModel)]="clients.PColLiv" (input)="Calcul()" class="form-control"></td>
+                    <td><input type="text" [(ngModel)]="facture.MHTColLiv" name="MHTColLiv" readonly class="form-control"></td>
+                  <td ><button (click)="hideRow(0)"  class="hide-button">x</button></td>
+                  </tr>
+                  <tr *ngIf="showRow[1]" (click)="onChange($event)">
+                    <td>2</td>
+                    <td>Retour Colis</td>
+                    <td><input type="text" [(ngModel)]="facture.QteColRet" name="QteColRet" (input)="Calcul()" required class="form-control"></td>
+                    <td><input type="text" name="PColRet" [value]="clients.PColRet" [(ngModel)]="clients.PColRet" (input)="Calcul()" class="form-control"></td>
+                    <td><input type="text" [(ngModel)]="facture.MHTColRet" name="MHTColRet" readonly class="form-control"></td>
+                    <td ><button (click)="hideRow(1)" class="hide-button">x</button></td>
+                  </tr>
+                  <tr *ngIf="showRow[2]" (click)="onChange($event)">
+                    <td>3</td>
+                    <td>Echange Colis</td>
+                    <td><input type="text" [(ngModel)]="facture.QteColEchg" name="QteColEchg" (input)="Calcul()" required class="form-control"></td>
+                    <td><input type="text" name="PColEchg" [value]="clients.PColEchg" [(ngModel)]="clients.PColEchg" (input)="Calcul()" class="form-control"></td>
+                    <td><input type="text" [(ngModel)]="facture.MHTColEchg" name="MHTColEchg" readonly class="form-control"></td>
+                    <td ><button (click)="hideRow(2)" class="hide-button">x</button></td>
+                  </tr>
+                  <tr *ngIf="showRow[3]" (click)="onChange($event)">
+                    <td>4</td>
+                    <td>COD</td>
+                    <td><input type="text" [(ngModel)]="facture.QteCOD" name="QteCOD" (input)="Calcul()" required class="form-control"></td>
+                    <td><input type="text" name="Pcod" [value]="clients.Pcod" [(ngModel)]="clients.Pcod" (input)="Calcul()" class="form-control"></td>
+                    <td><input type="text" [(ngModel)]="facture.MHTCOD" name="MHTCOD" readonly class="form-control"></td>
+                    <td ><button (click)="hideRow(3)" class="hide-button">x</button></td>
+                  </tr>
+                  <tr *ngIf="showRow[4]" (click)="onChange($event)">
+                    <td>5</td>
+                    <td>Savebag MF</td>
+                    <td><input type="text" [(ngModel)]="facture.QteSBMF" name="QteSBMF" (input)="Calcul()" required class="form-control"></td>
+                    <td><input type="text" name="Psbmf" [value]="clients.Psbmf" [(ngModel)]="clients.Psbmf" (input)="Calcul()" class="form-control"></td>
+                    <td><input type="text" [(ngModel)]="facture.MHTSBMF" name="MHTSBMF" readonly class="form-control"></td>
+                    <td ><button (click)="hideRow(4)" class="hide-button">x</button></td>
+                  </tr>
+                  <tr *ngIf="showRow[5]" (click)="onChange($event)">
+                    <td>6</td>
+                    <td>Savebag GF</td>
+                    <td><input type="text" [(ngModel)]="facture.QteSBGF" name="QteSBGF" (input)="Calcul()" required class="form-control"></td>
+                    <td><input type="text" name="Psbgf" [(ngModel)]="clients.Psbgf" [value]="clients.Psbgf" (input)="Calcul()" class="form-control"></td>
+                    <td><input type="text" [(ngModel)]="facture.MTHTBGF" name="MTHTBGF" readonly class="form-control"></td>
+                    <td ><button (click)="hideRow(5)" class="hide-button">x</button></td>
+                  </tr>
+                </tbody>
+              </table>
+
+
+              <table class="table">
+                <tr>
+                  <td><label for="matriculeFiscale">Montant total H.T</label></td>
+                  <td><input type="text" [(ngModel)]="facture.MTHT" name="matriculeFiscale" readonly class="form-control"></td>
+                </tr>
+                <tr>
+                  <td><label for="CIN">Remise en %</label></td>
+                  <td><input type="text" [(ngModel)]="facture.Remise" (input)="Calcul()" name="code" class="form-control"></td>
+                </tr>
+                <tr>
+                  <td><label>Total H.T</label></td>
+                  <td><input type="text" [(ngModel)]="facture.TotHT" name="TotHT" readonly class="form-control"></td>
+                </tr>
+                <tr>
+                  <td><label>Total TVA</label></td>
+                  <td><input type="text" [(ngModel)]="facture.TotTVA" name="TotTVA" readonly class="form-control"></td>
+                </tr>
+                <tr>
+                  <td><label>Timbre Fiscale</label></td>
+                  <td><input type="text" [(ngModel)]="facture.TimbreFSC" name="TimbreFSC" required class="form-control"></td>
+                </tr>
+                <tr>
+                  <td><label>Montant TTC</label></td>
+                  <td><input type="text" [(ngModel)]="facture.MontTTC" name="MontTTC" required class="form-control"></td>
+                </tr>
+              </table>
+
+              <div class="col-12">
+                <button
+                type="submit"
+                class="gradient-button"
+                [disabled]="loading"
+              >
+                <span *ngIf="loading" class="spinner-grow spinner-grow-sm" role="status"></span>
+                <span *ngIf="!loading">Valider</span>
+              </button>              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- [ Typography ] end -->
+</div>
+<!-- [ Main Content ] end -->

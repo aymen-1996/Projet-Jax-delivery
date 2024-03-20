@@ -1,0 +1,9 @@
+<div id="container">
+    <app-sidebar [isCollapsed]="isCollapsed" (toggleSidebar)="toggleSidebar()" [COMERCIO]="COMERCIO"></app-sidebar>
+    <div id="contentContainer" [style.marginLeft.px]="sidebarWidth">
+      <app-header></app-header>
+      <div class="content" [style.marginLeft.px]="sidebarWidth">
+      <app-body ></app-body>
+    </div>
+    
+  </div>

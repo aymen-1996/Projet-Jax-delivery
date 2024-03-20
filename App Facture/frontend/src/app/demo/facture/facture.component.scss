@@ -1,0 +1,122 @@
+$borderWidth: 2px;
+
+@mixin buttonLayer {
+  content: "";
+	border: $borderWidth solid transparent;
+  opacity: 0;
+  pointer-events: none;
+ 	border-image-slice: 1;
+}
+
+.gradient-button {
+  position: centre;
+  z-index: 1;
+  display: block;
+  top: calc(50% - 2.5rem - 5px);
+  left: calc(50% - 6rem - 5px);
+	height: 3rem;
+	width:10rem;
+  margin: auto;
+	background: transparent linear-gradient(to top left, rgba(7, 144, 218, 0.2) 0%, rgba(13, 136, 218, 0.2) 40%, rgba(49,128,135,.2) 100%);
+	border: $borderWidth solid transparent;
+	border-image-source: linear-gradient(to top left, rgb(217, 217, 6) 0%, rgb(27, 6, 189) 40%, rgb(2, 5, 17) 80%);
+	border-image-slice: 0.8;
+  transition: transform .25s;
+  letter-spacing: .1rem;
+  font-family:  'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 1.0rem;
+  font-weight: 200;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: #227ad2;
+
+
+  &:active {
+    transform: scale(.96);
+
+    &::before {
+      opacity: 1;
+    }
+  }
+
+}
+input[type=text] {
+	appearance: none;
+	border: none;
+	outline: none;
+	background: rgba(#9ec3ed, .2);
+	border-radius: .2em .2em 0 0;
+	padding: .4em;
+	color: #368abe;
+
+}
+
+input[type=text]:focus {
+  border-bottom: solid #2b5aba;
+}
+input[type=date]:focus {
+	border-bottom: solid #2b5aba;
+  }
+  
+
+//
+input[type=date] {
+	border: none;
+	padding: .8em .9em;
+	border-radius: 2em;
+	color: #0f088c;
+	// &::-webkit-datetime-edit { padding: 1em; }
+	// &::-webkit-datetime-edit-fields-wrapper { background: rgba(#E91E63, .2); }
+	&::-webkit-datetime-edit-text { color: rgb(18, 24, 49); padding: 0 0.3em; }
+	// &::-webkit-datetime-edit-month-field { color: #E91E63; }
+	// &::-webkit-datetime-edit-day-field { color: #E91E63; }
+	// &::-webkit-datetime-edit-year-field { color: #E91E63; }
+	&::-webkit-inner-spin-button { display: none; }
+	&::-webkit-calendar-picker-indicator {
+		background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23E91E63' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='4' width='18' height='18' rx='2' ry='2'/%3E%3Cline x1='16' y1='2' x2='16' y2='6'/%3E%3Cline x1='8' y1='2' x2='8' y2='6'/%3E%3Cline x1='3' y1='10' x2='21' y2='10'/%3E%3C/svg%3E");
+	}
+}
+
+
+
+
+
+
+
+  /* Style for table-date cells */
+
+
+  /* Style for form labels */
+  .form-label {
+    width: 100%;
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: block;
+  }
+  
+  /* Style for form controls */
+  .form-control {
+    width: 100%;
+    box-sizing: border-box; /* Ensure that padding and borders don't add to the width */
+    padding: 8px;
+    margin-bottom: 10px; /* Add margin if needed */
+  }
+  /* Style for form controls */
+
+
+  /* Optional: Add some styling for odd and even rows */
+ 
+  .hide-button {
+  /* Change to your desired background color */
+    color: #1e083c; /* Change to your desired text color */
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s ease; /* Add a smooth transition effect */
+  }
+  
+  .hide-button:hover {
+    background-color: #cc6022; /* Change to your desired hover background color */
+  }
